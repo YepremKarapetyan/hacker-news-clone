@@ -225,6 +225,7 @@ h3 {
     font-size: 20px;
     text-decoration: none;
     font-weight: 600;
+    margin-left: 15px;
 }
 
 .post-content a.title:hover {
