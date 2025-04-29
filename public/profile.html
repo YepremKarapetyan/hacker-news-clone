@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Hacker News Clone</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo"><h1>Hacker News Clone</h1></a>
+        <nav>
+            <a href="/" id="section-new">new</a>
+            <a href="/?section=past" id="section-past">past</a>
+            <a href="/?section=comments" id="section-comments">comments</a>
+            <a href="/?section=ask" id="section-ask">ask</a>
+            <a href="/?section=show" id="section-show">show</a>
+            <a href="/?section=job" id="section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" id="login-link">login</a>
+            <a href="/register" id="register-link">register</a>
+            <a href="#" id="profile-link" style="display: none;"></a>
+            <a href="#" id="logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+    </header>
+    <main>
+        <section class="profile-header">
+            <h2 id="profile-username">Username</h2>
+            <p>Email: <span id="profile-email"></span></p>
+            <p>Joined: <span id="profile-joined"></span></p>
+            <p>Posts: <span id="profile-posts-count">0</span></p>
+            <p>Comments: <span id="profile-comments-count">0</span></p>
+        </section>
+        <section>
+            <h3>Posts</h3>
+            <ul id="user-posts" class="post-list"></ul>
+        </section>
+        <section>
+            <h3>Comments</h3>
+            <ul id="user-comments" class="comment-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <a href="/" id="footer-section-new">new</a>
+            <a href="/?section=past" id="footer-section-past">past</a>
+            <a href="/?section=comments" id="footer-section-comments">comments</a>
+            <a href="/?section=ask" id="footer-section-ask">ask</a>
+            <a href="/?section=show" id="footer-section-show">show</a>
+            <a href="/?section=job" id="footer-section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" id="footer-login-link">login</a>
+            <a href="/register" id="footer-register-link">register</a>
+            <a href="#" id="footer-profile-link" style="display: none;"></a>
+            <a href="#" id="footer-logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+        <p>© 2025 Hacker News Clone created by <br><i><b>Yeprem Karapetyan</b></i></p>
+    </footer>
+    <div id="toast" class="toast"></div>
+    <script src="/script.js"></script>
+</body>
+</html>

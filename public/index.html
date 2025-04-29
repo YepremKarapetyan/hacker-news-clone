@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker News Clone</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo"><h1>Hacker News Clone</h1></a>
+        <nav>
+            <a href="/" id="section-new" class="active">new</a>
+            <a href="/?section=past" id="section-past">past</a>
+            <a href="/?section=comments" id="section-comments">comments</a>
+            <a href="/?section=ask" id="section-ask">ask</a>
+            <a href="/?section=show" id="section-show">show</a>
+            <a href="/?section=job" id="section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" id="login-link">login</a>
+            <a href="/register" id="register-link">register</a>
+            <a href="#" id="profile-link" style="display: none;"></a>
+            <a href="#" id="logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+    </header>
+    <main>
+        <div class="controls" id="post-controls">
+            <div class="sort">
+                <span>Sort by:</span>
+                <button id="sort-points" class="active" onclick="sortPosts('points')">Points</button>
+                <button id="sort-date" onclick="sortPosts('date')">Date</button>
+            </div>
+            <div class="filter">
+                <span>Filter:</span>
+                <button id="filter-all" class="active" onclick="filterPosts('all')">All</button>
+                <button id="filter-my" onclick="filterPosts('my')">My Posts</button>
+            </div>
+        </div>
+        <section id="posts-section">
+            <ul id="post-list" class="post-list"></ul>
+        </section>
+        <section id="comments-section" style="display: none;">
+            <h2>Recent Comments</h2>
+            <ul id="comment-list" class="comment-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <a href="/" id="footer-section-new">new</a>
+            <a href="/?section=past" id="footer-section-past">past</a>
+            <a href="/?section=comments" id="footer-section-comments">comments</a>
+            <a href="/?section=ask" id="footer-section-ask">ask</a>
+            <a href="/?section=show" id="footer-section-show">show</a>
+            <a href="/?section=job" id="footer-section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" id="footer-login-link">login</a>
+            <a href="/register" id="footer-register-link">register</a>
+            <a href="#" id="footer-profile-link" style="display: none;"></a>
+            <a href="#" id="footer-logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+        <p>© 2025 Hacker News Clone created by <br><i><b>Yeprem Karapetyan</b></i></p>
+    </footer>
+    <div id="toast" class="toast"></div>
+    <script src="/script.js"></script>
+</body>
+</html>

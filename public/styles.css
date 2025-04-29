@@ -1,0 +1,727 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background: linear-gradient(180deg, #f8f1e9, #e6e2d3);
+    color: #1c2526;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 0 32px;
+}
+
+.toast {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #c9a959, #a68a3f);
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    z-index: 1000;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.error {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+}
+
+header {
+    background: linear-gradient(135deg, #1c2526, #2e3b3e);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: nowrap;
+}
+
+header .logo {
+    text-decoration: none;
+}
+
+header h1 {
+    color: #c9a959;
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+header h1:hover {
+    color: #e6c07b;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+header nav a {
+    color: #e0e0e0;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a:hover {
+    color: #c9a959;
+    transform: translateY(-2px);
+}
+
+header nav a.active {
+    color: #c9a959;
+    font-weight: 700;
+    border-bottom: 3px solid #c9a959;
+}
+
+#logout-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#logout-link:hover {
+    color: #c9a959;
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    margin: 40px 0;
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    margin-bottom: 40px;
+    color: #1c2526;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    margin: 40px 0 20px;
+    color: #1c2526;
+    font-weight: 600;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.sort, .filter {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.sort span, .filter span {
+    margin-right: 16px;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+.sort button, .filter button {
+    background: none;
+    border: none;
+    color: #c9a959;
+    font-size: 16px;
+    margin: 0 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sort button:hover, .filter button:hover {
+    color: #e6c07b;
+    transform: translateY(-2px);
+}
+
+.sort button.active, .filter button.active {
+    color: #1c2526;
+    font-weight: 700;
+}
+
+.post-list, .comment-list {
+    list-style: none;
+}
+
+.post-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.post-list li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.post-points {
+    color: #4a4a4a;
+    font-size: 16px;
+    width: 120px;
+    text-align: right;
+    padding-top: 6px;
+}
+
+.post-content {
+    flex: 1;
+}
+
+.post-content a.title {
+    color: #1c2526;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.post-content a.title:hover {
+    color: #c9a959;
+}
+
+.post-meta {
+    color: #4a4a4a;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.post-meta a {
+    color: #4a4a4a;
+    text-decoration: none;
+}
+
+.post-meta a:hover {
+    color: #c9a959;
+}
+
+#submit-btn, #register-btn, #login-btn{
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #c9a959, #a68a3f);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.upvote-btn, .edit-btn {
+    cursor: pointer;
+    color: #4a4a4a;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.upvote-btn:hover, .edit-btn:hover {
+    color: #c9a959;
+    transform: translateY(-2px);
+}
+
+.comments {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.comment {
+    border-left: 4px solid #c9a959;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.comment.nested {
+    margin-left: 40px;
+}
+
+.comment-meta {
+    color: #4a4a4a;
+    font-size: 14px;
+}
+
+.comment-meta a {
+    color: #4a4a4a;
+    text-decoration: none;
+}
+
+.comment-meta a:hover {
+    color: #c9a959;
+}
+
+.comment-content {
+    font-size: 16px;
+    color: #1c2526;
+}
+
+.comment-form {
+    margin-top: 32px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.comment-form textarea:focus {
+    border-color: #c9a959;
+    box-shadow: 0 0 0 4px rgba(201, 169, 89, 0.2);
+    outline: none;
+}
+
+.comment-form button {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #c9a959, #a68a3f);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.comment-form button:hover {
+    background: linear-gradient(135deg, #e6c07b, #c9a959);
+    transform: translateY(-2px);
+}
+
+.comment-form button:focus {
+    outline: 2px solid #c9a959;
+    outline-offset: 2px;
+}
+
+.comment-item {
+    display: block;
+    padding: 32px;
+    margin-bottom: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.comment-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.comment-author a {
+    color: #c9a959;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.comment-author a:hover {
+    color: #e6c07b;
+}
+
+.comment-author a:focus {
+    outline: 2px solid #c9a959;
+    outline-offset: 2px;
+}
+
+.comment-time {
+    color: #4a4a4a;
+    font-size: 14px;
+}
+
+.comment-body {
+    margin-bottom: 20px;
+}
+
+.comment-body p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #1c2526;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.comment-post a {
+    color: #c9a959;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.comment-post a:hover {
+    color: #e6c07b;
+}
+
+.comment-post a:focus {
+    outline: 2px solid #c9a959;
+    outline-offset: 2px;
+}
+
+.comment-reply {
+    color: #4a4a4a;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.comment-reply:hover {
+    color: #c9a959;
+    transform: translateY(-2px);
+}
+
+.comment-reply:focus {
+    outline: 2px solid #c9a959;
+    outline-offset: 2px;
+}
+
+.profile-header {
+    background: linear-gradient(180deg, #f8f1e9, #e6e2d3);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.profile-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    margin-bottom: 32px;
+    color: #c9a959;
+}
+
+.profile-header p {
+    font-size: 20px;
+    color: #1c2526;
+    margin-bottom: 16px;
+}
+
+.profile-header span {
+    font-weight: 600;
+}
+
+.user-post-item, .user-comment-item {
+    display: block;
+    padding: 32px;
+    margin-bottom: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.user-post-item:hover, .user-comment-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.user-post-item .post-content a.title {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+}
+
+.user-comment-item .comment-meta a {
+    color: #c9a959;
+    font-weight: 500;
+}
+
+.user-comment-item .comment-meta a:hover {
+    color: #e6c07b;
+}
+
+.user-comment-item .comment-content {
+    font-size: 16px;
+    margin-top: 16px;
+}
+
+.no-items {
+    padding: 32px;
+    color: #4a4a4a;
+    font-style: italic;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+}
+
+footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 32px;
+    text-align: center;
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+footer a {
+    color: #4a4a4a;
+    margin: 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover {
+    color: #c9a959;
+    transform: translateY(-2px);
+}
+
+footer a.active {
+    color: #c9a959;
+    font-weight: 700;
+}
+
+.submit-form, .form-group {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 32px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1c2526;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #c9a959;
+    box-shadow: 0 0 0 4px rgba(201, 169, 89, 0.2);
+    outline: none;
+}
+
+.form-group button {
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #c9a959, #a68a3f);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-group button:hover {
+    background: linear-gradient(135deg, #e6c07b, #c9a959);
+    transform: translateY(-2px);
+}
+
+.form-group button:focus {
+    outline: 2px solid #c9a959;
+    outline-offset: 2px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header nav {
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    header nav a {
+        margin: 8px 12px;
+        font-size: 15px;
+    }
+
+    main {
+        padding: 32px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-list li, .user-post-item {
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .post-points {
+        text-align: left;
+        margin-bottom: 16px;
+        width: auto;
+    }
+
+    .comment-item, .user-comment-item {
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .comment-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .profile-header {
+        padding: 32px;
+    }
+
+    .profile-header h2 {
+        font-size: 40px;
+    }
+
+    .profile-header p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-content a.title {
+        font-size: 18px;
+    }
+
+    .post-meta {
+        font-size: 13px;
+    }
+
+    .comment-body p {
+        font-size: 15px;
+    }
+
+    .comment-author a {
+        font-size: 15px;
+    }
+
+    .comment-time {
+        font-size: 13px;
+    }
+
+    .comment-post a, .comment-reply {
+        font-size: 13px;
+    }
+
+    .profile-header h2 {
+        font-size: 36px;
+    }
+}

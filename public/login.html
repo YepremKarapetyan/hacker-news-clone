@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hacker News Clone</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo"><h1>Hacker News Clone</h1></a>
+        <nav>
+            <a href="/" id="section-new">new</a>
+            <a href="/?section=past" id="section-past">past</a>
+            <a href="/?section=comments" id="section-comments">comments</a>
+            <a href="/?section=ask" id="section-ask">ask</a>
+            <a href="/?section=show" id="section-show">show</a>
+            <a href="/?section=job" id="section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" class="active">login</a>
+            <a href="/register">register</a>
+            <a href="#" id="profile-link" style="display: none;"></a>
+            <a href="#" id="logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Login</h2>
+        <form onsubmit="event.preventDefault(); login();">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" id="login-btn">Login</button>
+        </form>
+    </main>
+    <footer>
+        <nav>
+            <a href="/" id="footer-section-new">new</a>
+            <a href="/?section=past" id="footer-section-past">past</a>
+            <a href="/?section=comments" id="footer-section-comments">comments</a>
+            <a href="/?section=ask" id="footer-section-ask">ask</a>
+            <a href="/?section=show" id="footer-section-show">show</a>
+            <a href="/?section=job" id="footer-section-job">jobs</a>
+            <a href="/submit">submit</a>
+            <a href="/login" id="footer-login-link">login</a>
+            <a href="/register" id="footer-register-link">register</a>
+            <a href="#" id="footer-profile-link" style="display: none;"></a>
+            <a href="#" id="footer-logout-link" style="display: none;" onclick="logout()">logout</a>
+        </nav>
+        <p>&copy; 2025 Hacker News Clone created by <br><i><b>Yeprem Karapetyan</b></i></p>
+    </footer>
+    <div id="toast" class="toast"></div>
+    <script src="/script.js"></script>
+</body>
+</html>
