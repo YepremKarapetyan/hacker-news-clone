@@ -62,8 +62,6 @@ Set Up Environment Variables: Create a .env file in the root directory and add t
 PORT=3000
 JWT_SECRET='secretkey_kackerNews'
 
-Replace your_jwt_secret_key with a secure key for JWT authentication.
-
 Configure MongoDB: Ensure MongoDB is running locally on mongodb://localhost:27017/hackernews or update the connection string in server.js if using a cloud instance.
 
 Start the Application:
