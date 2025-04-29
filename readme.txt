@@ -50,7 +50,7 @@ npm (Node Package Manager)
 Installation
 
 Clone the Repository:
-git clone https://github.com/your-username/hacker-news-clone.git
+git clone https://github.com/YepremKarapetyan/hacker-news-clone.git
 cd hacker-news-clone
 
 
@@ -60,7 +60,7 @@ npm install
 
 Set Up Environment Variables: Create a .env file in the root directory and add the following:
 PORT=3000
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET='secretkey_kackerNews'
 
 Replace your_jwt_secret_key with a secure key for JWT authentication.
 
