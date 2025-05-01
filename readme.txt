@@ -125,6 +125,4 @@ Inspired by Hacker News.
 Built with love for the developer community.
 
 Contact
-For questions or feedback, reach out to your-email@example.com or open an issue on GitHub.
-
-© 2025 Hacker News Clone
+For questions or feedback, reach out to eprem96@gmail.com or open an issue on GitHub.
